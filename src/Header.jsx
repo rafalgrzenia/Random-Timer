@@ -1,15 +1,15 @@
 export default function Header() {
   return (
     <header>
-      <div className="container">
+      <div className="medium-container">
         <nav>
           <ul>
             <li>
               <a href="">Random Timer</a>
             </li>
-            <li>
+            {/* <li>
               <a href="">About</a>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>

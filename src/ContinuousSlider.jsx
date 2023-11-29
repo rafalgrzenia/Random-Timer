@@ -12,11 +12,11 @@ export default function ContinuousSlider({ volume, setVolume }) {
   function handleCheckVolume() {
     alertSound.play();
   }
-  }
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  function handleChangeVolume(value) {
+    setVolume(value);
+    alertSound.volume = value / 100;
+  }
 
   return (
     <Box sx={{ width: 200 }}>
@@ -24,8 +24,8 @@ export default function ContinuousSlider({ volume, setVolume }) {
         <VolumeDown />
         <Slider
           aria-label="Volume"
-          value={value}
-          onChange={handleChange}
+          value={volume}
+          onChange={(e) => handleChangeVolume(e.target.value)}
           onMouseUp={() => handleCheckVolume()}
         />
         <VolumeUp />

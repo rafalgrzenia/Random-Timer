@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import InputSlider from "./ContinuousSlider";
+import { alertSound } from "./ContinuousSlider";
 import { getRandomTime } from "./functions/getRandomTime";
-import beepAlert from "./audio/beep.mp3";
+import ContinuousSlider from "./ContinuousSlider";
 
 export default function Timer() {
   const [isTimerOn, setIsTimerOn] = useState(false);
+  const [volume, setVolume] = useState(30);
   const [minTime, setMinTime] = useState(2);
   const [maxTime, setMaxTime] = useState(3);
-  const alertSound = new Audio(beepAlert);
 
   let pauseTimer;
 
@@ -58,7 +58,6 @@ export default function Timer() {
     setIsTimerOn(!isTimerOn);
   }
 
-
   return (
     <main>
       <div className="small-container">
@@ -93,7 +92,7 @@ export default function Timer() {
               </div>
             </div>
             <div className="volume-container">
-              <InputSlider />
+              <ContinuousSlider volume={volume} setVolume={setVolume} />
             </div>
           </>
         )}

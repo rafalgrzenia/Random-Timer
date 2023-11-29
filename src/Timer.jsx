@@ -3,6 +3,8 @@ import InputSlider from "./ContinuousSlider";
 
 export default function Timer() {
   const [isTimerOn, setIsTimerOn] = useState(false);
+  const [minTime, setMinTime] = useState(2);
+  const [maxTime, setMaxTime] = useState(3);
   function handleTimerState() {
     setIsTimerOn(!isTimerOn);
   }
@@ -22,6 +24,8 @@ export default function Timer() {
               min={0}
               max={60}
               placeholder="min"
+                  value={minTime}
+                  onChange={(e) => setMinTime(Number(e.target.value))}
             />
           </div>
           <div className="max-timer">
@@ -33,6 +37,8 @@ export default function Timer() {
               min={1}
               max={60}
               placeholder="min"
+                  value={maxTime}
+                  onChange={(e) => setMaxTime(Number(e.target.value))}
             />
           </div>
         </div>

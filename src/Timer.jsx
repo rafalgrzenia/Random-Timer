@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import InputSlider from "./ContinuousSlider";
+import { getRandomTime } from "./functions/getRandomTime";
 import beepAlert from "./audio/beep.mp3";
 
 export default function Timer() {
@@ -8,6 +9,17 @@ export default function Timer() {
   const [maxTime, setMaxTime] = useState(3);
   const alertSound = new Audio(beepAlert);
   let pauseTimer;
+    async function setTimer() {
+      const randomTime = getRandomTime(minTime, maxTime);
+
+      await timerDelay(1000);
+
+      await playAlertWithDelay(250);
+
+      await playAlertWithDelay(3000);
+
+      if (!pauseTimer) setTimer();
+    }
   function timerDelay(delay) {
     return new Promise((resolve) => {
       setTimeout(() => {

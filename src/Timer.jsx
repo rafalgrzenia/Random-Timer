@@ -1,10 +1,18 @@
+import { useEffect, useState } from "react";
 import InputSlider from "./ContinuousSlider";
 
 export default function Timer() {
+  const [isTimerOn, setIsTimerOn] = useState(false);
+  function handleTimerState() {
+    setIsTimerOn(!isTimerOn);
+  }
+
   return (
     <main>
       <div className="small-container">
         <h1>Random Timer</h1>
+        {isTimerOn ? null : (
+          <>
         <div className="minmax-container">
           <div className="min-timer">
             <label htmlFor="min-input">Min time:</label>
@@ -30,17 +38,18 @@ export default function Timer() {
         </div>
         <div className="volume-container">
           <InputSlider />
-          {/* <input
-            className="volume-range"
-            min={0}
-            max={100}
-            defaultValue={50}
-            type="range"
-          /> */}
         </div>
+          </>
+        )}
+
         <div className="buttons-container">
-          <button className="start-button">START</button>
-          <button className="reset-button">RESET</button>
+          {isTimerOn ? (
+            <button onClick={handleTimerState}>Cancel</button>
+          ) : (
+            <button onClick={handleTimerState} className="start-button">
+              START
+            </button>
+          )}
         </div>
       </div>
     </main>

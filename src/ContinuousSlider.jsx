@@ -6,14 +6,12 @@ import VolumeDown from "@mui/icons-material/VolumeDown";
 import VolumeUp from "@mui/icons-material/VolumeUp";
 import beepAlert from "./audio/beep.mp3";
 
-const alert = new Audio(beepAlert);
+export const alertSound = new Audio(beepAlert);
 
-export default function ContinuousSlider() {
-  const [value, setValue] = React.useState(30);
-
-  function handleSetVolume() {
-    alert.volume = value / 100;
-    alert.play();
+export default function ContinuousSlider({ volume, setVolume }) {
+  function handleCheckVolume() {
+    alertSound.play();
+  }
   }
 
   const handleChange = (event, newValue) => {
@@ -28,7 +26,7 @@ export default function ContinuousSlider() {
           aria-label="Volume"
           value={value}
           onChange={handleChange}
-          onMouseUp={() => handleSetVolume()}
+          onMouseUp={() => handleCheckVolume()}
         />
         <VolumeUp />
       </Stack>

@@ -14,26 +14,39 @@ export default function Timer() {
   useEffect(() => {
     pauseTimer = false;
 
-    if (isTimerOn) {
-      setTimer();
-    }
-
-    async function setTimer() {
-      const randomTime = getRandomTime(minTime, maxTime);
-
-      await timerDelay(1000);
-
-      await playAlertWithDelay(250);
-
-      await playAlertWithDelay(3000);
-
-      if (!pauseTimer) setTimer();
-    }
+    if (isTimerOn) setTimer();
 
     return () => {
       pauseTimer = true;
     };
   }, [isTimerOn]);
+
+  async function setTimer() {
+    const randomTime = getRandomTime(minTime, maxTime);
+
+    console.log(randomTime);
+
+    console.time("Interval")
+    console.time("First Alert")
+    console.time("Second Alert")
+
+
+    await timerDelay(1000);
+
+    console.timeEnd("Interval")
+
+
+    await playAlertWithDelay(250);
+    console.timeEnd("First Alert")
+
+
+    await playAlertWithDelay(3000);
+
+    console.timeEnd("Second Alert")
+
+
+    if (!pauseTimer) setTimer();
+  }
 
   function timerDelay(delay) {
     return new Promise((resolve) => {

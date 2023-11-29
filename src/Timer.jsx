@@ -7,6 +7,16 @@ export default function Timer() {
   const [minTime, setMinTime] = useState(2);
   const [maxTime, setMaxTime] = useState(3);
   const alertSound = new Audio(beepAlert);
+  let pauseTimer;
+  function timerDelay(delay) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        if (pauseTimer) return;
+        resolve();
+      }, delay);
+    });
+  }
+
   function playAlertWithDelay(delay) {
     return new Promise((resolve) => {
       setTimeout(() => {

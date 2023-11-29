@@ -1,10 +1,22 @@
 import { useEffect, useState } from "react";
 import InputSlider from "./ContinuousSlider";
+import beepAlert from "./audio/beep.mp3";
 
 export default function Timer() {
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [minTime, setMinTime] = useState(2);
   const [maxTime, setMaxTime] = useState(3);
+  const alertSound = new Audio(beepAlert);
+  function playAlertWithDelay(delay) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        if (pauseTimer) return;
+        alertSound.play();
+        resolve();
+      }, delay);
+    });
+  }
+
   function handleTimerState() {
     setIsTimerOn(!isTimerOn);
   }

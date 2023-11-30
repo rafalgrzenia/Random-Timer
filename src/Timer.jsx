@@ -24,26 +24,11 @@ export default function Timer() {
   async function setTimer() {
     const randomTime = getRandomTime(minTime, maxTime);
 
-    console.log(randomTime);
-
-    console.time("Interval")
-    console.time("First Alert")
-    console.time("Second Alert")
-
-
-    await timerDelay(1000);
-
-    console.timeEnd("Interval")
-
+    await timerDelay(randomTime);
 
     await playAlertWithDelay(250);
-    console.timeEnd("First Alert")
 
-
-    await playAlertWithDelay(3000);
-
-    console.timeEnd("Second Alert")
-
+    await playAlertWithDelay(12000);
 
     if (!pauseTimer) setTimer();
   }
@@ -83,11 +68,13 @@ export default function Timer() {
                 <input
                   id="min-input"
                   type="number"
-                  min={0}
+                  maxLength={2}
+                  min={1}
                   max={60}
-                  placeholder="min"
                   value={minTime}
-                  onChange={(e) => setMinTime(Number(e.target.value))}
+                  onChange={(e) => {
+                    setMinTime(Number(e.target.value));
+                  }}
                 />
               </div>
               <div className="max-timer">
@@ -96,11 +83,14 @@ export default function Timer() {
                 <input
                   type="number"
                   id="max-input"
+                  maxLength={2}
                   min={1}
                   max={60}
                   placeholder="min"
                   value={maxTime}
-                  onChange={(e) => setMaxTime(Number(e.target.value))}
+                  onChange={(e) => {
+                    setMaxTime(Number(e.target.value));
+                  }}
                 />
               </div>
             </div>

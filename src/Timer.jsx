@@ -23,20 +23,12 @@ export default function Timer() {
 
   async function setTimer() {
     const randomTime = getRandomTime(Number(minTime), Number(maxTime));
-    console.log(randomTime);
-    console.time("Interval");
 
     await timerDelay(randomTime);
 
-    console.timeEnd("Interval");
-    console.time("First Alert");
-    console.time("Second Alert");
-
     await playAlertWithDelay(250);
-    console.timeEnd("First Alert");
 
     await playAlertWithDelay(12000);
-    console.timeEnd("Second Alert");
 
     if (!pausedTimer) setTimer();
   }

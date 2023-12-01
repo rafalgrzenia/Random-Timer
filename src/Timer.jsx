@@ -57,12 +57,14 @@ export default function Timer() {
   }
 
   function handleSetTimerOn() {
-    if (minTime > maxTime) {
-      alert("Min Time must be less than Max Time");
+    if (minTime < 0 || maxTime < 0) {
+      alert("Number can't be less than 0");
     } else if (maxTime > 60) {
       alert("Max time can't be higher than 60");
     } else if (minTime > 60) {
       alert("Min time can't be higher than 60");
+    } else if (minTime > maxTime) {
+      alert("Min Time must be less than Max Time");
     } else {
       setIsTimerOn(true);
     }
@@ -80,7 +82,6 @@ export default function Timer() {
                 <input
                   id="min-input"
                   type="number"
-                  maxLength={2}
                   min={0}
                   max={60}
                   placeholder="min"
@@ -96,7 +97,6 @@ export default function Timer() {
                 <input
                   type="number"
                   id="max-input"
-                  maxLength={2}
                   min={1}
                   max={60}
                   placeholder="min"

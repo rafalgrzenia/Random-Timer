@@ -22,7 +22,7 @@ export default function Timer() {
   }, [isTimerOn]);
 
   async function setTimer() {
-    const randomTime = getRandomTime(minTime, maxTime);
+    const randomTime = getRandomTime(Number(minTime), Number(maxTime));
 
     await timerDelay(randomTime);
 
@@ -52,8 +52,20 @@ export default function Timer() {
     });
   }
 
-  function handleTimerState() {
-    setIsTimerOn(!isTimerOn);
+  function handleSetTimerOff() {
+    setIsTimerOn(false);
+  }
+
+  function handleSetTimerOn() {
+    if (minTime > maxTime) {
+      alert("Min Time must be less than Max Time");
+    } else if (maxTime > 60) {
+      alert("Max time can't be higher than 60");
+    } else if (minTime > 60) {
+      alert("Min time can't be higher than 60");
+    } else {
+      setIsTimerOn(true);
+    }
   }
 
   return (
@@ -69,11 +81,12 @@ export default function Timer() {
                   id="min-input"
                   type="number"
                   maxLength={2}
-                  min={1}
+                  min={0}
                   max={60}
+                  placeholder="min"
                   value={minTime}
                   onChange={(e) => {
-                    setMinTime(Number(e.target.value));
+                    setMinTime(e.target.value);
                   }}
                 />
               </div>
@@ -89,7 +102,7 @@ export default function Timer() {
                   placeholder="min"
                   value={maxTime}
                   onChange={(e) => {
-                    setMaxTime(Number(e.target.value));
+                    setMaxTime(e.target.value);
                   }}
                 />
               </div>
@@ -102,9 +115,9 @@ export default function Timer() {
 
         <div className="buttons-container">
           {isTimerOn ? (
-            <button onClick={handleTimerState}>Cancel</button>
+            <button onClick={handleSetTimerOff}>Cancel</button>
           ) : (
-            <button onClick={handleTimerState} className="start-button">
+            <button onClick={handleSetTimerOn} className="start-button">
               START
             </button>
           )}

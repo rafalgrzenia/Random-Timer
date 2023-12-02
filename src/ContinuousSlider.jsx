@@ -25,6 +25,7 @@ export default function ContinuousSlider({ volume, setVolume }) {
         <Slider
           aria-label="Volume"
           value={volume}
+          onTouchEnd={() => handleCheckVolume()}
           onChange={(e) => handleChangeVolume(e.target.value)}
           onMouseUp={() => handleCheckVolume()}
         />

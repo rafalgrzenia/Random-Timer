@@ -5,11 +5,8 @@ export default function Header() {
         <nav>
           <ul>
             <li>
-              <a href="">Random Timer</a>
+              <a href="./">Random Timer</a>
             </li>
-            {/* <li>
-              <a href="">About</a>
-            </li> */}
           </ul>
         </nav>
       </div>

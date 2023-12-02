@@ -4,7 +4,7 @@ import Stack from "@mui/material/Stack";
 import Slider from "@mui/material/Slider";
 import VolumeDown from "@mui/icons-material/VolumeDown";
 import VolumeUp from "@mui/icons-material/VolumeUp";
-import beepAlert from "./audio/beep.ogg";
+import beepAlert from "./audio/beep.mp3";
 
 export const alertSound = new Audio(beepAlert);
 
@@ -25,6 +25,7 @@ export default function ContinuousSlider({ volume, setVolume }) {
         <Slider
           aria-label="Volume"
           value={volume}
+          onTouchEnd={() => handleCheckVolume()}
           onChange={(e) => handleChangeVolume(e.target.value)}
           onMouseUp={() => handleCheckVolume()}
         />

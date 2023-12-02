@@ -24,7 +24,7 @@ body {
 }
 
 header {
-  margin-bottom: 7.5rem;
+  margin-bottom: 3.5rem;
   .medium-container {
     border-bottom: 1px solid #383737;
     height: 60px;
@@ -42,6 +42,7 @@ header {
       }
 
       a {
+        padding-left: 1rem;
         text-decoration: none;
         font-size: 2.2rem;
         color: inherit;
@@ -51,8 +52,10 @@ header {
 }
 
 main {
+  padding: 0 1rem;
+  padding-bottom: 3rem;
   .small-container {
-    width: 35rem;
+    max-width: 38rem;
     border-radius: 0.625rem;
     background: rgba(41, 41, 41, 0.5);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -113,12 +116,46 @@ main {
     button {
       cursor: pointer;
       transition: 0.2s ease-in;
-      padding: 0.5rem 1.6rem;
+      padding: 0.7rem 2rem;
       font-size: 1.4rem;
       font-weight: 600;
       border-radius: 10px;
       border: none;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  header {
+    .medium-container {
+      nav {
+        a {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  main {
+    .small-container {
+      padding: 1.5rem 0;
+      gap: 2.5rem;
+      width: 100%;
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    .minmax-container {
+      label {
+        width: 100%;
+        font-size: 1.5rem;
+      }
+      input {
+        width: 3.5rem;
+      }
     }
   }
 }

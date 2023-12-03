@@ -14,7 +14,7 @@ export default function Timer() {
   useEffect(() => {
     pausedTimer = false;
 
-    if (isTimerOn) setTimer();
+    isTimerOn && setTimer();
 
     return () => {
       pausedTimer = true;

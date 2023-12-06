@@ -14,7 +14,7 @@
 
 ### Technologies used:
 
-[![Technologies](https://skillicons.dev/icons?i=html,css,js,react,vite,materialui)](https://skillicons.dev)
+[![Technologies](https://skillicons.dev/icons?i=html,scss,js,react,vite,materialui)](https://skillicons.dev)
 
 
 #### Website:
